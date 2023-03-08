@@ -100,7 +100,10 @@ func pack(typ string, value interface{}, _isArray bool) []byte {
 			v = Uint64(value)
 		} else if strings.HasPrefix(typ, "uint256") {
 			v = Uint256(value)
+		} else if strings.HasPrefix(typ, "uint192") {
+			v = Uint192(value)
 		}
+
 		return padZeros(v, size/8)
 	}
 

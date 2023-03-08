@@ -10,6 +10,24 @@ import (
 	"github.com/ethereum/go-ethereum/common/math"
 )
 
+// Uint192 uint192
+func Uint192(input interface{}) []byte {
+	switch v := input.(type) {
+	case *big.Int:
+		return common.LeftPadBytes(v.Bytes(), 24)
+	case string:
+		bn := new(big.Int)
+		bn.SetString(v, 10)
+		return common.LeftPadBytes(bn.Bytes(), 24)
+	}
+
+	if isArray(input) {
+		return Uint128Array(input)
+	}
+
+	return common.LeftPadBytes([]byte(""), 24)
+}
+
 // Uint256 uint256
 func Uint256(input interface{}) []byte {
 	switch v := input.(type) {

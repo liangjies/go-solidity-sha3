@@ -4,8 +4,6 @@ import (
 	"encoding/hex"
 	"fmt"
 	"math/big"
-
-	"github.com/miguelmota/go-solidity-sha3"
 )
 
 func main() {
